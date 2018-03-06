@@ -1,0 +1,12 @@
+philo
+*.idea
+idea
+make
+*.o
+*#
+#*
+*~
+cmake-build-debug
+*.txt
+idea
+CMakeLists
