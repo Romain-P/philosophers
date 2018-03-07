@@ -2,6 +2,7 @@ philo
 *.idea
 idea
 make
+*.o
 *#
 #*
 *~
