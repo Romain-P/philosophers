@@ -10,7 +10,10 @@ CFLAGS = -Wall -Werror -Wextra -Iinc
 
 LDFLAGS += -Llib -lriceferee -lpthread
 
-SRC	=	src/main.c
+SRC	=	src/main.c	\
+		src/thread.c \
+		src/option.c \
+		src/util.c
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -5,6 +5,13 @@
 #ifndef PSU_PHILOSOPHER_2017_MAIN_H
 # define PSU_PHILOSOPHER_2017_MAIN_H
 
-# define EXIT_SUCCESS   (0)
+#include <sys/types.h>
+
+typedef enum    exit_status_e
+{
+    SUCCESS = 0,
+    FAILURE = 84
+}               exit_status_t;
+
 
 #endif //PSU_PHILOSOPHER_2017_MAIN_H
