@@ -35,13 +35,12 @@ typedef struct      game_handler_s
 {
     size_t          reached_eats;
     options_t       *options;
-    player_t        *philosophers;
 }                   game_handler_t;
 
 void    handler_init(game_handler_t *handler, options_t *options, player_t players[]);
 void    eat(player_t *player);
 void    think(player_t *player);
 void    sleep(player_t *player);
-void    *start(void *arg);
+void    *player_start(void *arg);
 
 #endif //PSU_PHILOSOPHER_2017_MAIN_H

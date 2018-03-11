@@ -4,11 +4,11 @@
 
 #include <pthread.h>
 #include <extern.h>
+#include <stdio.h>
 #include "philosopher.h"
 
 void handler_init(game_handler_t *handler, options_t *options, player_t players[])
 {
-    handler->philosophers = players;
     handler->options = options;
     for (size_t i = 0; i < options->philosophers; ++i) {
         player_t *right = i == options->philosophers - 1 ? players : players + i;
@@ -47,7 +47,7 @@ void    sleep(player_t *player)
     lphilo_sleep();
 }
 
-void            *start(void *arg)
+void            *player_start(void *arg)
 {
     player_t    *player = (player_t *) arg;
 

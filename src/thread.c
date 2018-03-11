@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 #include <philosopher.h>
+#include <stdio.h>
 #include "thread.h"
 
 bool thread_init(pthread_t threads[], player_t players[], size_t size, void *(*callback)(void *))
