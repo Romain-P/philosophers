@@ -3,7 +3,7 @@
 //
 
 #include <stdio.h>
-#include <memory.h>
+#include <string.h>
 #include "option.h"
 #include "util.h"
 
@@ -19,25 +19,18 @@ static bool set_option_size(char const *label, size_t *field, args_t *pos, bool 
 {
     if (strcmp(label, pos->args[pos->ac]))
         return true;
-    else if (*field != 0) {
-        print_err(*pos->args, "%s already set", label);
-        return false;
-    }
+    else if (*field != 0)
+        return print_err(*pos->args, "%s already set", label);
     int64_t parsed;
     char const *arg = get_next_arg(label, pos);
-    if (!arg) {
-        print_err(*pos->args, "option %s requires an argument", label);
-        return false;
-    } else if (!parse_int(arg, &parsed)) {
-        print_err(*pos->args, "%s is not a number (required by option %s)", arg, label);
-        return false;
-    } else if (parsed == 0 && strict) {
-        print_err(*pos->args, "option %s: arg must be > 0 (parsed %d)", label, parsed);
-        return false;
-    } else if (parsed < 0) {
-        print_err(*pos->args, "option %s: arg must be positive (parsed %d)", label, parsed);
-        return false;
-    }
+    if (!arg)
+        return print_err(*pos->args, "option %s requires an argument", label);
+     else if (!parse_int(arg, &parsed))
+        return print_err(*pos->args, "%s is not a number (required by option %s)", arg, label);
+     else if (parsed == 0 && strict)
+        return print_err(*pos->args, "option %s: arg must be > 0 (parsed %d)", label, parsed);
+     else if (parsed < 0)
+        return print_err(*pos->args, "option %s: arg must be positive (parsed %d)", label, parsed);
     *field = (size_t) parsed;
     return true;
 }
@@ -55,8 +48,7 @@ bool            parse_options(options_t *opts, size_t ac, char * const *args)
     }
     if (!opts->max_eats || !opts->philosophers) {
         error:
-        print_err(*args, "you must specify valid -p and -e options");
-        return false;
+        return print_err(*args, "you must specify valid -p and -e options");
     }
     return true;
 }

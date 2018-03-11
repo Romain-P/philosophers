@@ -15,7 +15,7 @@ bool        parse_int(char const *str, int64_t *ptr)
     return end == str + strlen(str);
 }
 
-void        print_err(char *bin, char const *format, ...)
+bool        print_err(char *bin, char const *format, ...)
 {
     size_t      bin_len;
     size_t      err_len;
@@ -35,4 +35,5 @@ void        print_err(char *bin, char const *format, ...)
     va_start(list, format);
     vfprintf(stderr, err, list);
     va_end(list);
+    return false;
 }

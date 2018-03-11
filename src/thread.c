@@ -3,12 +3,13 @@
 //
 
 #include <stdlib.h>
+#include <philosopher.h>
 #include "thread.h"
 
-bool thread_init(pthread_t threads[], size_t size, void *(*callback)(void *), void *arg)
+bool thread_init(pthread_t threads[], player_t players[], size_t size, void *(*callback)(void *))
 {
     for (size_t i=0; i < size; ++i)
-        if (pthread_create(&threads[i], NULL, callback, arg))
+        if (pthread_create(&threads[i], NULL, callback, players + i))
             return false;
     return true;
 }

@@ -24,7 +24,8 @@ bool parse_int(char const *str, int64_t *ptr);
  * @param bin       process name
  * @param format    message format
  * @param ...       args
+ * @return          false for any case
  */
-void        print_err(char *bin, char const *format, ...);
+bool        print_err(char *bin, char const *format, ...);
 
 #endif //PROJECT_UTIL_H

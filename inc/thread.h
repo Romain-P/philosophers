@@ -13,12 +13,12 @@
  * Initialize given threads with no attributes
  *
  * @param threads   threads array
+ * @param players   philosophers array
  * @param size      the number of threads in this array
  * @param callback  called as main entry when the thread starts
- * @param arg       arg passed to the callback
  * @return          false if an error occurred, true otherwise
  */
-bool thread_init(pthread_t threads[], size_t size, void *(*callback)(void *), void *arg);
+bool thread_init(pthread_t threads[], player_t players[], size_t size, void *(*callback)(void *));
 
 
 /**

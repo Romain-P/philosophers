@@ -8,19 +8,20 @@
 
 CFLAGS = -Wall -Werror -Wextra -Iinc
 
-LDFLAGS += -Llib -lriceferee -lpthread
+LDFLAGS += -L ./lib -Wl,-rpath,./lib -lriceferee -lpthread
 
 SRC	=	src/main.c	\
 		src/thread.c \
 		src/option.c \
-		src/util.c
+		src/util.c	\
+		src/handler.c
 
 OBJ	=	$(SRC:.c=.o)
 
 NAME	= 	philo
 
 $(NAME): $(OBJ)
-	gcc $(OBJ) -o $(NAME) $(LDFLAGS)
+	gcc $(OBJ) -o $(NAME) $(LDFLAGS) $(CFLAGS)
 
 all: $(NAME)
 
